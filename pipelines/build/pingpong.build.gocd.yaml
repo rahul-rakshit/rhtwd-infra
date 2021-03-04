@@ -12,19 +12,26 @@ pipelines:
         auto_update: false
         branch: trunk
     stages:
-      - temp:
+      - build:
           fetch_materials: true
           keep_artifacts: false
           clean_workspace: false
           approval:
             type: success
             allow_only_on_success: false
-          jobs:
-            say_hi:
+          docker_build_and_push:
+            docker_build:
               timeout: 0
               tasks:
                 - exec:
+                    command: docker
                     arguments:
-                      - "This is where the next pingpong image shall be built"
-                    command: echo
+                      - "build ."
                     run_if: passed
+            docker_push:
+              timeout: 0
+              tasks:
+                - exec:
+                  command: docker
+                  arguments:
+                    - "push rahulrakshit/pingpong"
