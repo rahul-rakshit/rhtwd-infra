@@ -8,7 +8,6 @@ pipelines:
     materials:
       pingpong_infra_provisioning:
         git: https://github.com/rahul-rakshit/rhtwd-infra
-        materialName: BUILD_REPO
         shallow_clone: false
         auto_update: true
         branch: trunk
