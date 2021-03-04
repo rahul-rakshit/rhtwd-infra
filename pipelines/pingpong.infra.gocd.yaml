@@ -1,6 +1,6 @@
 format_version: 10
 pipelines:
-  pingpong:
+  pingpong_infra_provisioning:
     group: RHTWD_infra_provisioning
     label_template: ${COUNT}
     lock_behavior: none
