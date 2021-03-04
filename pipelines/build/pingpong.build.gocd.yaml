@@ -19,7 +19,7 @@ pipelines:
           approval:
             type: success
             allow_only_on_success: false
-          docker_build_and_push:
+          docker_build:
             docker_build:
               timeout: 0
               tasks:
@@ -28,10 +28,18 @@ pipelines:
                     arguments:
                       - "build ."
                     run_if: passed
-            docker_push:
-              timeout: 0
-              tasks:
-                - exec:
-                  command: docker
-                  arguments:
-                    - "push rahulrakshit/pingpong"
+      - push:
+          fetch_materials: true
+          keep_artifacts: false
+          clean_workspace: false
+          approval:
+            type: success
+            allow_only_on_success: false
+          docker_push:
+            timeout: 0
+            tasks:
+              - exec:
+                command: docker
+                arguments:
+                  - "push rahulrakshit/pingpong"
+                run_if: passed
