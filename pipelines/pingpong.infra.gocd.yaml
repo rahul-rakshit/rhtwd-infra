@@ -24,11 +24,11 @@ pipelines:
               timeout: 0
               tasks:
                 - exec:
-                    command: /bin/bash
-                    arguments:
-                      - "-c"
-                      - "echo revision: $GO_REVISION"
-                    run_if: passed
+                  command: /bin/bash
+                  arguments:
+                    - "-c"
+                    - "echo revision: $GO_REVISION"
+                  run_if: passed
                 - exec:
                   command: /bin/bash
                   arguments:
