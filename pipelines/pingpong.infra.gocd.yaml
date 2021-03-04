@@ -11,6 +11,10 @@ pipelines:
         shallow_clone: false
         auto_update: true
         branch: trunk
+      upstream:
+        pipeline: pingpong_build
+        stage: docker_push
+        name: upstream
     stages:
       - echo_go_env_vars:
           fetch_materials: true
