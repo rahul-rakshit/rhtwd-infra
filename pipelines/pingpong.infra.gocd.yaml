@@ -2,8 +2,8 @@ format_version: 10
 pipelines:
   pingpong_infra_provisioning:
     group: RHTWD_infra_provisioning
-    label_template: ${COUNT}-${git[:7]}
-    lock_behavior: none
+    label_template: "${COUNT}-${git[:7]}"
+    lock_behavior: unlock_when_finished
     display_order: -1
     materials:
       pingpong_infra_provisioning:
