@@ -1,16 +1,16 @@
 format_version: 10
 pipelines:
   pingpong:
-    group: RHTWD
+    group: RHTWD_build
     label_template: ${COUNT}
     lock_behavior: none
     display_order: -1
-    # materials:
-    #   rhtwd-infra:
-    #     git: https://github.com/rahul-rakshit/rhtwd-infra
-    #     shallow_clone: false
-    #     auto_update: false
-    #     branch: trunk
+    materials:
+      pingpong_build:
+        git: https://github.com/rahul-rakshit/pingpong
+        shallow_clone: false
+        auto_update: false
+        branch: trunk
     stages:
       - temp:
           fetch_materials: true
@@ -25,6 +25,6 @@ pipelines:
               tasks:
                 - exec:
                     arguments:
-                      - hi
+                      - "This is where the next pingpong image shall be built"
                     command: echo
                     run_if: passed
