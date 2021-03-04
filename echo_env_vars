@@ -1,4 +1,4 @@
 #!/bin/bash
 
-echo revision: $GO_REVISION_pingpong_infra_provisioning
+echo revision: $GO_REVISION_BUILD_REPO
 echo label: $GO_PIPELINE_LABEL
