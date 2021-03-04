@@ -11,7 +11,6 @@ pipelines:
         shallow_clone: false
         auto_update: true
         branch: trunk
-        # material_name: infra_provisioning
     stages:
       - echo_go_env_vars:
           fetch_materials: true
