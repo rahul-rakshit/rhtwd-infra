@@ -2,7 +2,7 @@ format_version: 10
 pipelines:
   pingpong_infra_provisioning:
     group: RHTWD_infra_provisioning
-    label_template: ${COUNT}
+    label_template: ${COUNT}-${svn}
     lock_behavior: none
     display_order: -1
     materials:
