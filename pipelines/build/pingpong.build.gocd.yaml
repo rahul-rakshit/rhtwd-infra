@@ -9,13 +9,13 @@ pipelines:
       pingpong_build:
         git: https://github.com/rahul-rakshit/pingpong
         shallow_clone: false
-        auto_update: false
+        auto_update: true
         branch: trunk
     stages:
       - docker_build:
           fetch_materials: true
           keep_artifacts: false
-          clean_workspace: false
+          clean_workspace: true
           approval:
             type: success
             allow_only_on_success: false
