@@ -1,0 +1,4 @@
+#!/bin/bash
+
+echo revision: $GO_REVISION
+echo label: $GO_PIPELINE_LABEL

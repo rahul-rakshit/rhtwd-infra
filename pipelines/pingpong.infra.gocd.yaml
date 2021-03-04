@@ -27,10 +27,5 @@ pipelines:
                     command: /bin/bash
                     arguments:
                       - "-c"
-                      - "echo revision: $GO_REVISION"
+                      - "./echo_env_vars"
                   run_if: passed
-                - exec:
-                    command: /bin/bash
-                    arguments:
-                      - "-c"
-                      - "echo label: $GO_PIPELINE_LABEL"
