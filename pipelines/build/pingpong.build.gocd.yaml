@@ -5,27 +5,40 @@ pipelines:
     label_template: ${COUNT}
     lock_behavior: none
     display_order: -1
+    # materials:
+    #   pingpong_build:
+    #     git: https://github.com/rahul-rakshit/pingpong
+    #     shallow_clone: false
+    #     auto_update: false
+    #     branch: trunk
+    #   stages:
+    #     - docker_build:
+    #         fetch_materials: true
+    #         keep_artifacts: false
+    #         clean_workspace: false
+    #         approval:
+    #           type: success
+    #           allow_only_on_success: false
+    #         jobs:
+    #           docker_build:
+    #             timeout: 0
+    #             tasks:
+    #               - exec:
+    #                   arguments:
+    #                     - build
+    #                     - .
+    #                   command: docker
+    #                   run_if: passed
     materials:
       pingpong_build:
         git: https://github.com/rahul-rakshit/pingpong
-        shallow_clone: false
-        auto_update: false
-        branch: trunk
-      stages:
-        - docker_build:
-            fetch_materials: true
-            keep_artifacts: false
-            clean_workspace: false
-            approval:
-              type: success
-              allow_only_on_success: false
+        stages:
+          - docker_build:
             jobs:
               docker_build:
-                timeout: 0
                 tasks:
                   - exec:
-                      arguments:
-                        - build
-                        - .
-                      command: docker
-                      run_if: passed
+                    command: docker
+                    arguments:
+                      - build
+                      - .
