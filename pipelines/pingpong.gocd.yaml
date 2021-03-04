@@ -5,12 +5,12 @@ pipelines:
     label_template: ${COUNT}
     lock_behavior: none
     display_order: -1
-    materials:
-      rhtwd-infra:
-        git: https://github.com/rahul-rakshit/rhtwd-infra
-        shallow_clone: false
-        auto_update: false
-        branch: trunk
+    # materials:
+    #   rhtwd-infra:
+    #     git: https://github.com/rahul-rakshit/rhtwd-infra
+    #     shallow_clone: false
+    #     auto_update: false
+    #     branch: trunk
     stages:
       - temp:
           fetch_materials: true
