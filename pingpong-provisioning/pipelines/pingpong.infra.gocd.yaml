@@ -31,5 +31,5 @@ pipelines:
                     command: /bin/bash
                     arguments:
                       - "-c"
-                      - "./echo_env_vars"
+                      - "echo $GO_PIPELINE_LABEL"
                   run_if: passed
