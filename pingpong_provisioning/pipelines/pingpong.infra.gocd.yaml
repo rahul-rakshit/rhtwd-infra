@@ -46,7 +46,7 @@ pipelines:
                     working_directory: pingpong_provisioning/terraform
                     arguments:
                       - "-c"
-                      - "terraform plan -out=tfplan -input=false -lock=false"
+                      - "terraform plan -out=tfplan -input=false"
                   run_if: passed
                 - exec:
                     command: /bin/bash
