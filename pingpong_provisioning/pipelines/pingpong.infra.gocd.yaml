@@ -29,25 +29,29 @@ pipelines:
               tasks:
                 - exec:
                     command: /bin/bash
+                    working_directory: pingpong_provisioning/terraform
                     arguments:
                       - "-c"
-                      - "terraform init"
+                      - "terraform init -input=false"
                   run_if: passed
                 - exec:
                     command: /bin/bash
+                    working_directory: pingpong_provisioning/terraform
                     arguments:
                       - "-c"
                       - "terraform validate"
                   run_if: passed
                 - exec:
                     command: /bin/bash
+                    working_directory: pingpong_provisioning/terraform
                     arguments:
                       - "-c"
-                      - "terraform plan"
+                      - "terraform plan -out=tfplan -input=false"
                   run_if: passed
                 - exec:
                     command: /bin/bash
+                    working_directory: pingpong_provisioning/terraform
                     arguments:
                       - "-c"
-                      - "terraform apply -auto-approve"
+                      - "terraform apply -input=false tfplan"
                   run_if: passed
