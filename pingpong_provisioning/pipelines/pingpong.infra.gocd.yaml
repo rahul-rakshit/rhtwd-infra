@@ -16,7 +16,7 @@ pipelines:
         stage: docker_push
         name: upstream
     stages:
-      - echo_go_env_vars:
+      - terraform:
           fetch_materials: true
           keep_artifacts: false
           clean_workspace: true
@@ -24,12 +24,30 @@ pipelines:
             type: success
             allow_only_on_success: false
           jobs:
-            echo_go_env_vars:
+            terraform:
               timeout: 0
               tasks:
                 - exec:
                     command: /bin/bash
                     arguments:
                       - "-c"
-                      - "echo $GO_PIPELINE_LABEL"
+                      - "terraform init"
+                  run_if: passed
+                - exec:
+                    command: /bin/bash
+                    arguments:
+                      - "-c"
+                      - "terraform validate"
+                  run_if: passed
+                - exec:
+                    command: /bin/bash
+                    arguments:
+                      - "-c"
+                      - "terraform plan"
+                  run_if: passed
+                - exec:
+                    command: /bin/bash
+                    arguments:
+                      - "-c"
+                      - "terraform apply -auto-approve"
                   run_if: passed
