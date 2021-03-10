@@ -9,12 +9,9 @@ resource "kubernetes_service" "pingpong" {
       app = kubernetes_deployment.pingpong.metadata.0.labels.app
     }
 
-    type = "NodePort"
-
     port {
       port        = 80
       target_port = 1357
-      node_port   = 30001
     }
 
     session_affinity = "ClientIP"

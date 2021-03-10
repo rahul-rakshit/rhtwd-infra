@@ -46,13 +46,6 @@ pipelines:
                     working_directory: pingpong_provisioning/terraform
                     arguments:
                       - "-c"
-                      - "terraform refresh"
-                  run_if: passed
-                - exec:
-                    command: /bin/bash
-                    working_directory: pingpong_provisioning/terraform
-                    arguments:
-                      - "-c"
                       - "terraform plan -out=tfplan -input=false"
                   run_if: passed
                 - exec:
