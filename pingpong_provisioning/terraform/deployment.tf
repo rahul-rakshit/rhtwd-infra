@@ -1,25 +1,31 @@
-resource "kubernetes_deployment" "echo_server" {
+resource "kubernetes_deployment" "pingpong" {
   metadata {
-    name      = "pingpong"
+    name      = var.service_name
     namespace = "default"
+
+    labels = {
+      app = var.service_name
+    }
   }
+
   spec {
     replicas = 2
     selector {
       match_labels = {
-        app = "pingpong"
+        app = var.service_name
       }
     }
+
     template {
       metadata {
         labels = {
-          app = "pingpong"
+          app = var.service_name
         }
       }
       spec {
         container {
           image = "rahulrakshit/pingpong:latest"
-          name  = "pingpong"
+          name  = var.service_name
           port {
             container_port = 1357
           }
