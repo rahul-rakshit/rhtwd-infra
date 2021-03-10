@@ -6,15 +6,15 @@ resource "kubernetes_service" "pingpong" {
 
   spec {
     selector = {
-      app = var.service_name
+      app = kubernetes_deployment.pingpong.metadata.0.labels.app
     }
 
-    type      = "NodePort"
-    node_port = 2000
+    type = "NodePort"
 
     port {
       port        = 80
       target_port = 1357
+      node_port   = 2000
     }
 
     session_affinity = "ClientIP"
