@@ -21,8 +21,9 @@ resource "kubernetes_cluster_role_binding" "allow_port_forward" {
   }
 
   role_ref {
-    kind = "ClusterRole"
-    name = "allow-port-forward"
+    kind      = "ClusterRole"
+    name      = "allow-port-forward"
+    api_group = "rbac.authorization.k8s.io"
   }
 }
 
