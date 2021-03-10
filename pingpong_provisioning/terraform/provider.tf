@@ -7,4 +7,6 @@ terraform {
   }
 }
 
-provider "kubernetes" {}
+provider "kubernetes" {
+  config_path = var.kube_config
+}
