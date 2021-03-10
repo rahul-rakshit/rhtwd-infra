@@ -14,7 +14,7 @@ resource "kubernetes_service" "pingpong" {
     port {
       port        = 80
       target_port = 1357
-      node_port   = 2000
+      node_port   = 30001
     }
 
     session_affinity = "ClientIP"
