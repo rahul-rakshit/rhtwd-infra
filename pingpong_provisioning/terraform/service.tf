@@ -8,15 +8,15 @@ resource "kubernetes_service" "pingpong" {
     selector = {
       app = var.service_name
     }
+
+    type      = "NodePort"
+    node_port = 2000
+
+    port {
+      port        = 80
+      target_port = 1357
+    }
+
+    session_affinity = "ClientIP"
   }
-
-  type      = "NodePort"
-  node_port = 2000
-
-  port {
-    port        = 80
-    target_port = 1357
-  }
-
-  session_affinity = "ClientIP"
 }
