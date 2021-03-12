@@ -3,7 +3,8 @@ resource "kubernetes_ingress" "traefik_ingress" {
     name      = "traefik-ingress"
     namespace = "default"
     annotations = {
-      "kubernetes.io/ingress.class" = "traefik"
+      "kubernetes.io/ingress.class"                      = "traefik"
+      "traefik.ingress.kubernetes.io/router.entrypoints" = "web"
     }
   }
 
