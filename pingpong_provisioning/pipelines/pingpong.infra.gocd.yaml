@@ -11,7 +11,7 @@ pipelines:
         shallow_clone: false
         auto_update: true
         branch: trunk
-        allowlist:
+        includes:
           - pingpong_provisioning/**/*
       upstream:
         pipeline: pingpong_build
