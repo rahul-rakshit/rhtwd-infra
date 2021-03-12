@@ -1,6 +1,6 @@
 format_version: 10
 pipelines:
-  pingpong_infra_provisioning:
+  ingress_provisioning:
     group: RHTWD_infra_provisioning
     label_template: "${COUNT}-${infra_provisioning[:7]}"
     lock_behavior: unlockWhenFinished
