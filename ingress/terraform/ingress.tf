@@ -7,8 +7,6 @@ resource "kubernetes_ingress" "default_ingress" {
     }
   }
 
-  wait_for_load_balancer = true
-
   spec {
     backend {
       service_name = "pingpong"
