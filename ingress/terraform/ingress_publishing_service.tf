@@ -1,6 +1,6 @@
 resource "kubernetes_service" "ingress_publishing" {
   metadata {
-    name      = "traefik"
+    name      = "traefik-publishing"
     namespace = "kube-system"
   }
 
