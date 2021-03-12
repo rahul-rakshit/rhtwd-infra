@@ -1,6 +1,6 @@
-resource "kubernetes_ingress" "default_ingress" {
+resource "kubernetes_ingress" "traefik_ingress" {
   metadata {
-    name      = "default-ingress"
+    name      = "traefik-ingress"
     namespace = "default"
     annotations = {
       "kubernetes.io/ingress.class" = "traefik"
