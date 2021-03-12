@@ -11,8 +11,8 @@ pipelines:
         shallow_clone: false
         auto_update: true
         branch: trunk
-      includes:
-        - ingress/**/*
+        includes:
+          - ingress/**/*
     stages:
       - terraform:
           fetch_materials: true
