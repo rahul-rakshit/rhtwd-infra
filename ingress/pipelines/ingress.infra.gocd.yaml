@@ -11,12 +11,8 @@ pipelines:
         shallow_clone: false
         auto_update: true
         branch: trunk
-        allowlist:
-          - pingpong_provisioning/**/*
-      upstream:
-        pipeline: pingpong_build
-        stage: docker_push
-        name: upstream
+      allowlist:
+        - ingress/**/*
     stages:
       - terraform:
           fetch_materials: true
@@ -31,28 +27,28 @@ pipelines:
               tasks:
                 - exec:
                     command: /bin/bash
-                    working_directory: pingpong_provisioning/terraform
+                    working_directory: ingress/terraform
                     arguments:
                       - "-c"
                       - "terraform init -input=false"
                   run_if: passed
                 - exec:
                     command: /bin/bash
-                    working_directory: pingpong_provisioning/terraform
+                    working_directory: ingress/terraform
                     arguments:
                       - "-c"
                       - "terraform validate"
                   run_if: passed
                 - exec:
                     command: /bin/bash
-                    working_directory: pingpong_provisioning/terraform
+                    working_directory: ingress/terraform
                     arguments:
                       - "-c"
                       - "terraform plan -out=tfplan -input=false"
                   run_if: passed
                 - exec:
                     command: /bin/bash
-                    working_directory: pingpong_provisioning/terraform
+                    working_directory: ingress/terraform
                     arguments:
                       - "-c"
                       - "terraform apply -input=false tfplan"
