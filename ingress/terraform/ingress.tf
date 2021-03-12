@@ -1,6 +1,9 @@
 resource "kubernetes_ingress" "default_ingress" {
   metadata {
     name = "default-ingress"
+    annotations = {
+      "kubernetes.io/ingress.class" = "traefik"
+    }
   }
 
   spec {
@@ -17,7 +20,8 @@ resource "kubernetes_ingress" "default_ingress" {
             service_port = 80
           }
 
-          path = "/*"
+          path      = "/*"
+          path_type = "Prefix"
         }
 
       }
