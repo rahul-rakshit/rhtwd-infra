@@ -20,10 +20,8 @@ resource "kubernetes_ingress" "default_ingress" {
             service_port = 80
           }
 
-          path      = "/*"
-          path_type = "Prefix"
+          path = "/*"
         }
-
       }
     }
   }
