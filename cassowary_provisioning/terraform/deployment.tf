@@ -33,38 +33,38 @@ resource "kubernetes_deployment" "cassowary" {
       }
     }
   }
+}
 
-  resource "kubernetes_deployment" "cassowary_prod" {
-    metadata {
-      name      = "${var.service_name}-prod"
-      namespace = "production"
+resource "kubernetes_deployment" "cassowary_prod" {
+  metadata {
+    name      = "${var.service_name}-prod"
+    namespace = "production"
 
-      labels = {
+    labels = {
+      app = var.service_name
+    }
+  }
+
+  spec {
+    replicas = 2
+    selector {
+      match_labels = {
         app = var.service_name
       }
     }
 
-    spec {
-      replicas = 2
-      selector {
-        match_labels = {
+    template {
+      metadata {
+        labels = {
           app = var.service_name
         }
       }
-
-      template {
-        metadata {
-          labels = {
-            app = var.service_name
-          }
-        }
-        spec {
-          container {
-            image = "rahulrakshit/cassowary:latest"
-            name  = var.service_name
-            port {
-              container_port = 8080
-            }
+      spec {
+        container {
+          image = "rahulrakshit/cassowary:latest"
+          name  = var.service_name
+          port {
+            container_port = 8080
           }
         }
       }
