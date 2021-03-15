@@ -1,19 +1,19 @@
-resource "kubernetes_service" "pingpong" {
-  metadata {
-    name      = var.service_name
-    namespace = var.namespace
-  }
+# resource "kubernetes_service" "pingpong" {
+#   metadata {
+#     name      = var.service_name
+#     namespace = var.namespace
+#   }
 
-  spec {
-    selector = {
-      app = kubernetes_deployment.pingpong.metadata.0.labels.app
-    }
+#   spec {
+#     selector = {
+#       app = kubernetes_deployment.pingpong.metadata.0.labels.app
+#     }
 
-    port {
-      port        = 80
-      target_port = 1357
-    }
+#     port {
+#       port        = 80
+#       target_port = 1357
+#     }
 
-    session_affinity = "ClientIP"
-  }
-}
+#     session_affinity = "ClientIP"
+#   }
+# }
