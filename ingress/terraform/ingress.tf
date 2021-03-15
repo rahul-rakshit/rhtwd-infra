@@ -28,6 +28,7 @@ resource "kubernetes_ingress" "traefik" {
 
           path = "/staging/*"
         }
+      }
     }
   }
 }
