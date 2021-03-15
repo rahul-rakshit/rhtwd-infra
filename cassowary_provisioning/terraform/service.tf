@@ -1,7 +1,7 @@
 resource "kubernetes_service" "cassowary" {
   metadata {
     name      = var.service_name
-    namespace = "default"
+    namespace = var.namespace
   }
 
   spec {

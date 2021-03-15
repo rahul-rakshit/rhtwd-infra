@@ -8,3 +8,8 @@ variable "service_name" {
   default = "pingpong"
 }
 
+
+variable "namespace" {
+  type = string 
+  default = "staging"
+}

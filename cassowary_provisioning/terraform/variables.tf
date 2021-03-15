@@ -8,3 +8,8 @@ variable "service_name" {
   default = "cassowary"
 }
 
+variable "namespace" {
+  type    = string
+  default = "staging"
+}
+

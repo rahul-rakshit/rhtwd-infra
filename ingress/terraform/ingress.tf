@@ -1,7 +1,7 @@
 resource "kubernetes_ingress" "traefik" {
   metadata {
     name      = "traefik"
-    namespace = "default"
+    namespace = var.namespace
   }
 
   spec {

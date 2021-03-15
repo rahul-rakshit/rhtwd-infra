@@ -1,7 +1,7 @@
 resource "kubernetes_service" "pingpong" {
   metadata {
     name      = var.service_name
-    namespace = "default"
+    namespace = var.namespace
   }
 
   spec {

@@ -1,7 +1,7 @@
 resource "kubernetes_deployment" "pingpong" {
   metadata {
     name      = var.service_name
-    namespace = "default"
+    namespace = var.namespace
 
     labels = {
       app = var.service_name
