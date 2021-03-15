@@ -1,10 +1,7 @@
-resource "kubernetes_ingress" "traefik_ingress" {
+resource "kubernetes_ingress" "traefik" {
   metadata {
     name      = "traefik-ingress"
     namespace = "default"
-    annotations = {
-      "kubernetes.io/ingress.class" = "traefik"
-    }
   }
 
   spec {
@@ -26,4 +23,8 @@ resource "kubernetes_ingress" "traefik_ingress" {
       }
     }
   }
+}
+
+resource "kubernetes_ingress_class" "traefik" {
+
 }
