@@ -36,7 +36,7 @@ resource "kubernetes_deployment" "cassowary" {
 
   resource "kubernetes_deployment" "cassowary_prod" {
     metadata {
-      name      = var.service_name
+      name      = "${var.service_name}-prod"
       namespace = "production"
 
       labels = {
