@@ -20,7 +20,18 @@ resource "kubernetes_ingress" "traefik" {
             service_port = 80
           }
 
-          path = "/*"
+          path = "/pingpong"
+        }
+      }
+
+      http {
+        path {
+          backend {
+            service_name = "cassowary"
+            service_port = 80
+          }
+
+          path = "/"
         }
       }
     }
