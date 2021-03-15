@@ -5,7 +5,7 @@ resource "kubernetes_ingress" "traefik" {
 
     annotations = {
       "kubernetes.io/ingress.class" = "traefik"
-      "traefik.frontend.rule"  = "PathPrefixStrip:/staging"
+      "traefik.frontend.rule.type"  = "PathPrefixStrip:/staging"
     }
   }
 
