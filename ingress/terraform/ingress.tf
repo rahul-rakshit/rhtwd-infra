@@ -22,9 +22,7 @@ resource "kubernetes_ingress" "traefik" {
 
           path = "/pingpong"
         }
-      }
 
-      http {
         path {
           backend {
             service_name = "cassowary"
