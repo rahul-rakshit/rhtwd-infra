@@ -4,7 +4,7 @@ resource "kubernetes_ingress" "traefik" {
     namespace = var.namespace
 
     annotations = {
-      traefik.ingress.kubernetes.io / rule-type : "PathPrefixStrip: /staging"
+      "traefik.ingress.kubernetes.io/rule-type" = "PathPrefixStrip: /staging"
     }
   }
 
