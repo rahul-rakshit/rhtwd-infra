@@ -4,8 +4,8 @@ resource "kubernetes_ingress" "traefik" {
     namespace = var.namespace
 
     annotations = {
-      "kubernetes.io/ingress.class"                  = "traefik"
-      "traefik.ingress.kubernetes.io/rewrite-target" = "/$2"
+      "kubernetes.io/ingress.class" = "traefik"
+      "traefik.frontend.rule.type"  = "PathPrefixStrip"
     }
   }
 
@@ -18,7 +18,7 @@ resource "kubernetes_ingress" "traefik" {
             service_port = 80
           }
 
-          path = "/staging/ping(/|$)(.*)"
+          path = "/staging/ping"
         }
 
         path {
@@ -27,7 +27,7 @@ resource "kubernetes_ingress" "traefik" {
             service_port = 80
           }
 
-          path = "/staging/cassowary(/|$)(.*)"
+          path = "/staging/*"
         }
       }
     }
