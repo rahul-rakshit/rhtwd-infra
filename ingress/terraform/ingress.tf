@@ -25,6 +25,3 @@ resource "kubernetes_ingress" "traefik" {
   }
 }
 
-resource "kubernetes_ingress_class" "traefik" {
-
-}
