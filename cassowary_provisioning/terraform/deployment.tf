@@ -27,7 +27,7 @@ resource "kubernetes_deployment" "cassowary" {
           image = "rahulrakshit/cassowary:latest"
           name  = var.service_name
           port {
-            container_port = 1357
+            container_port = 8080
           }
         }
       }
