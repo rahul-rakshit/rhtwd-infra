@@ -2,16 +2,13 @@ resource "kubernetes_ingress" "traefik" {
   metadata {
     name      = "traefik"
     namespace = var.namespace
+
+    annotations = {
+      traefik.ingress.kubernetes.io / rule-type : "PathPrefixStrip: /staging"
+    }
   }
 
   spec {
-    ingress_class_name = "traefik-internal"
-
-    backend {
-      service_name = "pingpong"
-      service_port = 80
-    }
-
     rule {
       http {
         path {
@@ -20,7 +17,7 @@ resource "kubernetes_ingress" "traefik" {
             service_port = 80
           }
 
-          path = "/pingpong"
+          path = "/staging/pingpong/*"
         }
 
         path {
@@ -29,33 +26,8 @@ resource "kubernetes_ingress" "traefik" {
             service_port = 80
           }
 
-          path = "/"
+          path = "/staging/*"
         }
-      }
-    }
-  }
-}
-
-resource "kubernetes_ingress" "traefik_prod" {
-  metadata {
-    name      = "traefik"
-    namespace = "production"
-  }
-
-  spec {
-    ingress_class_name = "traefik-internal"
-
-    rule {
-      http {
-        path {
-          backend {
-            service_name = "cassowary"
-            service_port = 80
-          }
-
-          path = "/"
-        }
-      }
     }
   }
 }
