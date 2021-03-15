@@ -1,10 +1,12 @@
 resource "kubernetes_ingress" "traefik" {
   metadata {
-    name      = "traefik-ingress"
+    name      = "traefik"
     namespace = "default"
   }
 
   spec {
+    ingress_class_name = "traefik-internal"
+
     backend {
       service_name = "pingpong"
       service_port = 80
