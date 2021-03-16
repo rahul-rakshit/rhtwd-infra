@@ -17,7 +17,7 @@ resource "kubernetes_ingress" "ingress" {
             service_port = 80
           }
 
-          path = "ping"
+          path = "/ping"
         }
 
         path {
@@ -26,7 +26,7 @@ resource "kubernetes_ingress" "ingress" {
             service_port = 80
           }
 
-          path = "*"
+          path = "/*"
         }
       }
     }
