@@ -15,12 +15,6 @@ resource "kubernetes_ingress" "ingress" {
       service_port = 80
     }
 
-    backend {
-      service_name = "pingpong"
-      service_port = 80
-    }
-
-
     rule {
       http {
         path {
