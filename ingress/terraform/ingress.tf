@@ -10,6 +10,17 @@ resource "kubernetes_ingress" "ingress" {
   }
 
   spec {
+    backend {
+      service_name = "cassowary"
+      service_port = 80
+    }
+
+    backend {
+      service_name = "pingpong"
+      service_port = 80
+    }
+
+
     rule {
       http {
         path {
@@ -18,7 +29,7 @@ resource "kubernetes_ingress" "ingress" {
             service_port = 80
           }
 
-          path = "/staging/ping"
+          path = "/ping"
         }
 
         path {
@@ -27,7 +38,7 @@ resource "kubernetes_ingress" "ingress" {
             service_port = 80
           }
 
-          path = "/staging/(/|$)(.*)"
+          path = "/*"
         }
       }
     }
