@@ -15,22 +15,22 @@ resource "kubernetes_ingress" "ingress" {
       http {
         path {
           backend {
-            service_name = "pingpong"
-            service_port = 80
-          }
-
-          # path = "/(staging/ping)"
-          path = "/ping"
-        }
-
-        path {
-          backend {
             service_name = "cassowary"
             service_port = 80
           }
 
           # path = "/staging/.*"
           path = "/cassowary"
+        }
+
+        path {
+          backend {
+            service_name = "pingpong"
+            service_port = 80
+          }
+
+          # path = "/(staging/ping)"
+          path = "/ping"
         }
       }
     }
