@@ -11,11 +11,6 @@ resource "kubernetes_ingress" "ingress" {
   }
 
   spec {
-    backend {
-      service_name = "cassowary"
-      service_port = 80
-    }
-
     rule {
       http {
         path {
