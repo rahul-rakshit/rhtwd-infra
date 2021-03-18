@@ -5,7 +5,7 @@ resource "kubernetes_ingress" "ingress" {
 
     annotations = {
       "kubernetes.io/ingress.class"          = "public"
-      "ingress.kubernetes.io/rewrite-target" = "/staging/$2"
+      "ingress.kubernetes.io/rewrite-target" = "/$2"
     }
   }
 
