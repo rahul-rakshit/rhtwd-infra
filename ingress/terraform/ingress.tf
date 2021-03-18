@@ -4,7 +4,8 @@ resource "kubernetes_ingress" "ingress" {
     namespace = var.namespace
 
     annotations = {
-      "kubernetes.io/ingress.class" = "public"
+      "kubernetes.io/ingress.class"     = "public"
+      "ingress.kubernetes.io/use-regex" = "true"
       # "ingress.kubernetes.io/rewrite-target" = "/$1"
     }
   }
