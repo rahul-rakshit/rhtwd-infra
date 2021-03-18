@@ -23,7 +23,7 @@ resource "kubernetes_ingress" "ingress" {
             service_port = 80
           }
 
-          path = "/staging/ping"
+          path = "/staging(/)(ping)($|/)"
         }
 
         path {
