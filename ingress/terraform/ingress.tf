@@ -35,7 +35,7 @@ resource "kubernetes_ingress" "ingress" {
           }
 
           # path = "/staging/.*"
-          path = "/*"
+          path = "/cassowary"
         }
       }
     }
