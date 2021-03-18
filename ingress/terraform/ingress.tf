@@ -4,8 +4,8 @@ resource "kubernetes_ingress" "ingress" {
     namespace = var.namespace
 
     annotations = {
-      "kubernetes.io/ingress.class" = "public"
-      # "ingress.kubernetes.io/rewrite-target" = "/staging/$2"
+      "kubernetes.io/ingress.class"          = "public"
+      "ingress.kubernetes.io/rewrite-target" = "/staging/$2"
     }
   }
 
@@ -23,7 +23,7 @@ resource "kubernetes_ingress" "ingress" {
             service_port = 80
           }
 
-          path = "/ping"
+          path = "/staging/ping"
         }
 
         path {
@@ -32,7 +32,7 @@ resource "kubernetes_ingress" "ingress" {
             service_port = 80
           }
 
-          path = "/*"
+          path = "/staging(/|$)(.*)"
         }
       }
     }
