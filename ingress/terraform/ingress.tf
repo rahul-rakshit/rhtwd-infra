@@ -4,8 +4,7 @@ resource "kubernetes_ingress" "ingress" {
     namespace = var.namespace
 
     annotations = {
-      "kubernetes.io/ingress.class"     = "public"
-      "ingress.kubernetes.io/use-regex" = true
+      "kubernetes.io/ingress.class" = "public"
       # "ingress.kubernetes.io/rewrite-target" = "/$1"
     }
   }
@@ -31,7 +30,7 @@ resource "kubernetes_ingress" "ingress" {
           }
 
           # path = "/staging/.*"
-          path = "/"
+          path = "/*"
         }
       }
     }
