@@ -1,35 +1,48 @@
 resource "kubernetes_ingress" "ingress" {
   metadata {
     name      = "ingress"
-    namespace = var.namespace
+    namespace = var.ingress_namespace
 
     annotations = {
       "kubernetes.io/ingress.class" = "public"
-      # "ingress.kubernetes.io/rewrite-target" = "/$1"
     }
   }
 
   spec {
     rule {
+      host = ""
       http {
 
         path {
           backend {
-            service_name = "pingpong"
+            service_name = "pingpong.staging.cluster.svc.local"
             service_port = 80
           }
 
-          # path = "/(staging/ping)"
           path = "/ping"
         }
 
         path {
           backend {
-            service_name = "cassowary"
+            service_name = "cassowary.staging.cluster.svc.local"
             service_port = 80
           }
 
-          # path = "/staging/.*"
+          path = "/"
+        }
+      }
+    }
+
+    rule {
+      host = "rhtwd.eu.ngrok.io"
+      http {
+
+        path {
+          backend {
+            service_name = "dummy-prod.production.cluster.svc.local"
+            service_port = 80
+          }
+
           path = "/"
         }
       }

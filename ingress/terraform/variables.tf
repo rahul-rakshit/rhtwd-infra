@@ -3,7 +3,7 @@ variable "kube_config" {
   default = "~/.kube/config"
 }
 
-variable "namespace" {
+variable "ingress_namespace" {
   type    = string
-  default = "staging"
+  default = "ingress"
 }
