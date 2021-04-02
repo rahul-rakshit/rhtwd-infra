@@ -3,7 +3,22 @@ variable "kube_config" {
   default = "~/.kube/config"
 }
 
-variable "ingress_namespace" {
+variable "staging_namespace" {
   type    = string
-  default = "ingress"
+  default = "staging"
+}
+
+variable "production_namespace" {
+  type    = string
+  default = "production"
+}
+
+variable "staging_hostname" {
+  type    = string
+  default = "staging-rhtwd.eu.ngrok.io"
+}
+
+variable "production_hostname" {
+  type    = string
+  default = "rhtwd.eu.ngrok.io"
 }
