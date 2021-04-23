@@ -10,12 +10,11 @@ variable "service_name" {
 
 
 variable "namespace" {
-  type = string 
+  type    = string
   default = "staging"
 }
 
 variable "build_label" {
-  type = string
-  default = "13-150e04f"
-  
+  type    = string
+  default = "latest"
 }
