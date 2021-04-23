@@ -47,16 +47,16 @@ pipelines:
                     command: /bin/bash
                     working_directory: pingpong_provisioning/terraform
                     arguments:
-                      - "TF_VAR_build_label=$GO_DEPENDENCY_LABEL_PINGPONG_BUILD"
                       - "-c"
+                      - "TF_VAR_build_label=$GO_DEPENDENCY_LABEL_PINGPONG_BUILD"
                       - "terraform plan -out=tfplan -input=false"
                   run_if: passed
                 - exec:
                     command: /bin/bash
                     working_directory: pingpong_provisioning/terraform
                     arguments:
-                      - "TF_VAR_build_label={GO_DEPENDENCY_LABEL_PINGPONG_BUILD}"
                       - "-c"
+                      - "TF_VAR_build_label={GO_DEPENDENCY_LABEL_PINGPONG_BUILD}"
                       - "terraform apply -input=false tfplan"
                   run_if: passed
       - endpoint_check:
