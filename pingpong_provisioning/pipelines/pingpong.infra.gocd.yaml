@@ -51,7 +51,7 @@ pipelines:
                       - >
                         terraform plan
                         -var build_label=$GO_DEPENDENCY_LABEL_PINGPONG_BUILD
-                        -out=tfplan=$GO_DEPENDENCY_LABEL_PINGPONG_BUILD -input=false
+                        -out=tfplan-$GO_DEPENDENCY_LABEL_PINGPONG_BUILD -input=false
                   run_if: passed
                 - exec:
                     command: /bin/bash
