@@ -30,7 +30,7 @@ pipelines:
                     working_directory: terratest_hello_world/test
                     arguments:
                       - -c
-                      - go mod . terratests
+                      - go mod init terratests
                   run_if: passed
                 - exec:
                     command: /bin/bash
