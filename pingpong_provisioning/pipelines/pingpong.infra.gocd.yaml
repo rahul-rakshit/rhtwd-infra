@@ -51,6 +51,7 @@ pipelines:
                       - >
                         terraform plan
                         -var build_label=$GO_DEPENDENCY_LABEL_PINGPONG_BUILD
+                        -var namespace=staging
                         -out=tfplan-$GO_DEPENDENCY_LABEL_PINGPONG_BUILD -input=false
                   run_if: passed
                 - exec:
