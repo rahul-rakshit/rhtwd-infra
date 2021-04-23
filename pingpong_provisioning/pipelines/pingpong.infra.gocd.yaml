@@ -40,8 +40,8 @@ pipelines:
                     command: /bin/bash
                     working_directory: pingpong_provisioning/terraform
                     arguments:
-                      - "-c"
-                      - "terraform validate"
+                      - -c
+                      - terraform validate
                   run_if: passed
                 - exec:
                     command: /bin/bash

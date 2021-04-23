@@ -13,10 +13,10 @@ pipelines:
         branch: trunk
         includes:
           - cassowary_provisioning/**/*
-      upstream:
+      cassowary_build:
         pipeline: cassowary_build
         stage: docker_push
-        name: upstream
+        name: CASSOWARY_BUILD
     stages:
       - terraform:
           fetch_materials: true
@@ -33,27 +33,34 @@ pipelines:
                     command: /bin/bash
                     working_directory: cassowary_provisioning/terraform
                     arguments:
-                      - "-c"
-                      - "terraform init -input=false"
+                      - -c
+                      - terraform init -input=false
                   run_if: passed
                 - exec:
                     command: /bin/bash
                     working_directory: cassowary_provisioning/terraform
                     arguments:
-                      - "-c"
-                      - "terraform validate"
+                      - -c
+                      - terraform validate
                   run_if: passed
                 - exec:
                     command: /bin/bash
                     working_directory: cassowary_provisioning/terraform
                     arguments:
-                      - "-c"
-                      - "terraform plan -out=tfplan -input=false"
+                      - -c
+                      - >
+                        terraform plan
+                        -var build_label=$GO_DEPENDENCY_LABEL_CASSOWARY_BUILD
+                        -out=tfplan-$GO_DEPENDENCY_LABEL_CASSOWARY_BUILD
+                        -input=false
                   run_if: passed
                 - exec:
                     command: /bin/bash
                     working_directory: cassowary_provisioning/terraform
                     arguments:
-                      - "-c"
-                      - "terraform apply -input=false tfplan"
+                      - -c
+                      - >
+                        terraform apply
+                        -input=false
+                        tfplan-$GO_DEPENDENCY_LABEL_CASSOWARY_BUILD
                   run_if: passed

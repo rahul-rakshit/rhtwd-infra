@@ -13,3 +13,6 @@ variable "namespace" {
   default = "staging"
 }
 
+variable "build_label" {
+  type = string
+}
