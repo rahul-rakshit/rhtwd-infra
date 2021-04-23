@@ -73,5 +73,5 @@ pipelines:
                     working_directory: scripts
                     arguments:
                       - "https://staging-rhtwd.eu.ngrok.io/ping"
-                      - '{"message":"pong"}'
+                      - '{"message":"pong","env":"staging"}'
                   run_if: passed
