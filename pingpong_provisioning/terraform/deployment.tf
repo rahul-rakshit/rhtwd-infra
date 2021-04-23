@@ -9,7 +9,7 @@ resource "kubernetes_deployment" "pingpong" {
   }
 
   spec {
-    replicas = 2
+    replicas = var.replica_count
     selector {
       match_labels = {
         app = var.service_name

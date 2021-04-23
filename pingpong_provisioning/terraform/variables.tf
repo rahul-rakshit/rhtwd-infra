@@ -8,13 +8,15 @@ variable "service_name" {
   default = "pingpong"
 }
 
+variable "replica_count" {
+  type    = number
+  default = 2
+}
 
 variable "namespace" {
-  type    = string
-  default = "staging"
+  type = string
 }
 
 variable "build_label" {
-  type    = string
-  # default = "latest"
+  type = string
 }
