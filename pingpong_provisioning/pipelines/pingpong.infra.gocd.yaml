@@ -69,9 +69,9 @@ pipelines:
               timeout: 0
               tasks:
                 - exec:
-                    command: /bin/bash
+                    command: "./endpoint_check.sh"
                     working_directory: scripts
                     arguments:
-                      - "-c"
-                      - 'endpoint_check.sh https://staging-rhtwd.eu.ngrok.io/ping {"message":"pong"}'
+                      - "https://staging-rhtwd.eu.ngrok.io/ping"
+                      - "{\"message\":\"pong\"}"
                   run_if: passed
