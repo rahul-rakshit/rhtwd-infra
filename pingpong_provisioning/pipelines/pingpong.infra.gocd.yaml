@@ -62,7 +62,7 @@ pipelines:
                     working_directory: pingpong_provisioning/terraform
                     arguments:
                       - "-c"
-                      - "TF_VAR_build_label={GO_DEPENDENCY_LABEL_PINGPONG_BUILD}
+                      - "TF_VAR_build_label={GO_DEPENDENCY_LABEL_PINGPONG_BUILD}"
                       - "terraform apply -input=false tfplan"
                   run_if: passed
       - endpoint_check:
