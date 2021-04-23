@@ -16,5 +16,5 @@ variable "namespace" {
 
 variable "build_label" {
   type    = string
-  default = "latest"
+  # default = "latest"
 }
