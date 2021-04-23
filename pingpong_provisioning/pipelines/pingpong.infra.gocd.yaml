@@ -13,10 +13,10 @@ pipelines:
         branch: trunk
         includes:
           - pingpong_provisioning/**/*
-      upstream:
+      pingpong_build:
         pipeline: pingpong_build
         stage: docker_push
-        name: upstream
+        name: PINGPONG_BUILD
     stages:
       - terraform:
           fetch_materials: true
@@ -34,7 +34,7 @@ pipelines:
                     working_directory: pingpong_provisioning/terraform
                     arguments:
                       - "-c"
-                      - "echo $GO_DEPENDENCY_LABEL"
+                      - "echo $GO_DEPENDENCY_LABEL_PINGPONG_BUILD"
                 - exec:
                     command: /bin/bash
                     working_directory: pingpong_provisioning/terraform
