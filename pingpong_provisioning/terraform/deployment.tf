@@ -24,7 +24,7 @@ resource "kubernetes_deployment" "pingpong" {
       }
       spec {
         container {
-          image = "rahulrakshit/pingpong:latest"
+          image = "rahulrakshit/pingpong:${var.build_label}"
           name  = var.service_name
           port {
             container_port = 1357
