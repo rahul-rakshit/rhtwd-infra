@@ -58,6 +58,7 @@ pipelines:
                       - "terraform apply -input=false tfplan"
                   run_if: passed
       - endpoint_check:
+          fetch_materials: true
           keep_artifacts: false
           clean_workspace: true
           approval:
@@ -69,7 +70,8 @@ pipelines:
               tasks:
                 - exec:
                     command: /bin/bash
+                    working_directory: scripts
                     arguments:
                       - "-c"
-                      - "echo helloworld"
+                      - 'endpoint_check.sh https://staging-rhtwd.eu.ngrok.io/ping {"message":"pong"}'
                   run_if: passed
