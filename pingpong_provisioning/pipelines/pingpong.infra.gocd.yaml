@@ -59,6 +59,7 @@ pipelines:
                     arguments:
                       - -c
                       - >
+                        terraform apply
                         -var build_label=$GO_DEPENDENCY_LABEL_PINGPONG_BUILD
                         -input=false tfplan
                   run_if: passed
