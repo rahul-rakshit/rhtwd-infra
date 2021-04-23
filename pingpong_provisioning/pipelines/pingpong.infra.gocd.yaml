@@ -34,6 +34,12 @@ pipelines:
                     working_directory: pingpong_provisioning/terraform
                     arguments:
                       - "-c"
+                      - "echo $GO_DEPENDENCY_LABEL_upstream"
+                - exec:
+                    command: /bin/bash
+                    working_directory: pingpong_provisioning/terraform
+                    arguments:
+                      - "-c"
                       - "terraform init -input=false"
                   run_if: passed
                 - exec:
