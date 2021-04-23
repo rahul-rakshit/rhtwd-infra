@@ -1,0 +1,48 @@
+format_version: 10
+pipelines:
+  terratest_hello_world:
+    group: RHTWD_infra_provisioning
+    label_template: "${COUNT}-${infra_provisioning[:7]}"
+    lock_behavior: unlockWhenFinished
+    display_order: -1
+    materials:
+      infra_provisioning:
+        git: https://github.com/rahul-rakshit/rhtwd-infra
+        shallow_clone: false
+        auto_update: true
+        branch: trunk
+        includes:
+          - terratest_hello_world/**/*
+    stages:
+      - terraform:
+          fetch_materials: true
+          keep_artifacts: false
+          clean_workspace: true
+          approval:
+            type: success
+            allow_only_on_success: false
+          jobs:
+            terraform:
+              timeout: 0
+              tasks:
+                - exec:
+                    command: /bin/bash
+                    working_directory: terratest_hello_world/test
+                    arguments:
+                      - -c
+                      - go mod . terratests
+                  run_if: passed
+                - exec:
+                    command: /bin/bash
+                    working_directory: terratest_hello_world/test
+                    arguments:
+                      - -c
+                      - go get -t
+                  run_if: passed
+                - exec:
+                    command: /bin/bash
+                    working_directory: terratest_hello_world/test
+                    arguments:
+                      - -c
+                      - go test -v
+                  run_if: passed
