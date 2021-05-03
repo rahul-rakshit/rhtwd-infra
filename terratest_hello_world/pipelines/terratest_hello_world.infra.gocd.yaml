@@ -5,6 +5,7 @@ pipelines:
     label_template: "${COUNT}-${infra_provisioning[:7]}"
     lock_behavior: unlockWhenFinished
     display_order: -1
+    environment: rhtwd
     materials:
       infra_provisioning:
         git: https://github.com/rahul-rakshit/rhtwd-infra
