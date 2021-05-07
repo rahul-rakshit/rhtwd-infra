@@ -52,7 +52,7 @@ pipelines:
                         terraform plan
                         -var build_label=$GO_DEPENDENCY_LABEL_PINGPONG_BUILD
                         -var namespace=staging
-                        -out=tfplan-$GO_DEPENDENCY_LABEL_PINGPONG_BUILD -input=false
+                        -out=tfplan-$GO_PIPELINE_LABEL -input=false
                   run_if: passed
                 - exec:
                     command: /bin/bash
@@ -61,7 +61,7 @@ pipelines:
                       - -c
                       - >
                         terraform apply
-                        -input=false tfplan-$GO_DEPENDENCY_LABEL_PINGPONG_BUILD
+                        -input=false tfplan-$GO_PIPELINE_LABEL
                   run_if: passed
       - endpoint_check:
           fetch_materials: true
