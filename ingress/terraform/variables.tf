@@ -22,7 +22,3 @@ variable "production_hostname" {
   type    = string
   default = "rhtwd.eu.ngrok.io"
 }
-
-variable "chinese_hello" {
-  type = string
-}
