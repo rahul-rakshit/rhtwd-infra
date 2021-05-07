@@ -12,3 +12,6 @@ variable "namespace" {
   type = string
 }
 
+variable "chinese_hello" {
+  type = string
+}
